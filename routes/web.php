@@ -21,5 +21,14 @@ Route::get('/', function () {
 /* 
 route for login system
 */
-Route::get('/login', [LoginController::class, 'index']); //view form login
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest'); //view form login
 Route::post('/login', [LoginController::class, 'authenticate']); // when user klik login button
+
+/* 
+route for dashboard system
+*/
+Route::get('/dashboard', function () {
+    return view('dashboard.index', [
+        "title" => "Dashboard"
+    ]);
+})->middleware('auth');
