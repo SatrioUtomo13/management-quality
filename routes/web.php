@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.main');
+    return view('welcome');
 });
+
+/* 
+route for login system
+*/
+Route::get('/login', [LoginController::class, 'index']); //view form login
+Route::post('/login', [LoginController::class, 'authenticate']); // when user klik login button
