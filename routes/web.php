@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PetugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,8 @@ Route::get('/dashboard', function () {
         "title" => "Dashboard"
     ]);
 })->middleware('auth');
+
+/* 
+route for tambah pertugas
+*/
+Route::resource('/petugas', PetugasController::class);
