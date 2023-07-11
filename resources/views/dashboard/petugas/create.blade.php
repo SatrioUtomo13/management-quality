@@ -7,7 +7,7 @@
         </h2>
 
         <div class="w-1/2">
-            <form action="/petugas" method="POST">
+            <form action="/users" method="POST">
                 @csrf
                 {{-- nama --}}
                 <div class="mb-6">

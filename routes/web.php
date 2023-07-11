@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PetugasController;
 
@@ -22,7 +23,7 @@ Route::get('/', function () {
 /* 
 route for login system
 */
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest'); //view form login
+Route::get('/login', [LoginController::class, 'index'])->name('login'); //view form login
 Route::post('/login', [LoginController::class, 'authenticate']); // when user klik login button
 
 /* 
@@ -37,4 +38,5 @@ Route::get('/dashboard', function () {
 /* 
 route for tambah pertugas
 */
-Route::resource('/petugas', PetugasController::class);
+Route::resource('/users', UserController::class);
+//Route::resource('/users', PetugasController::class)->middleware('auth');

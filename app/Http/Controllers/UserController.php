@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Contracts\Encryption\DecryptException;
 
-class PetugasController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,7 +45,7 @@ class PetugasController extends Controller
 
         User::create($validatedData); //store data to users table
 
-        return redirect('/petugas')->with('success', 'New User has been added'); //redirect with flash message
+        return redirect('/users')->with('success', 'New User has been added'); //redirect with flash message
     }
 
     /**
@@ -79,6 +77,7 @@ class PetugasController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect('/users')->with('success', 'User has been deleted');
     }
 }
