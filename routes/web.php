@@ -29,6 +29,7 @@ Route::post('/login', [LoginController::class, 'authenticate']); // when user kl
 /* 
 route for logout system
 */
+Route::post('/logout', [LoginController::class, 'logout']);
 
 /* 
 route for dashboard system
