@@ -3,16 +3,17 @@
 @section('content')
     <div class="space-y-5">
         <h2 class="text-2xl mb-6">
-            TAMBAH PETUGAS BARU
+            EDIT PETUGAS
         </h2>
 
         <div class="w-1/2">
-            <form action="/users" method="POST">
+            <form action="/users/{{ $user->id }}" method="POST">
+                @method('PUT')
                 @csrf
                 {{-- nama --}}
                 <div class="mb-6">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('name') is-invalid @enderror" autofocus value="{{ old('name') }}" autocomplete="off" autofocus>
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                    <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('name') is-invalid @enderror" autofocus value="{{ old('name', $user->name) }}" autocomplete="off">
                     @error('name')
                         <p class="mt-2 text-sm text-red-600 dark:text-red-500">
                             {{ $message }}
@@ -22,7 +23,7 @@
                 {{-- username --}}
                 <div class="mb-6">
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                    <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('username') is-invalid @enderror" autofocus value="{{ old('username') }}" autocomplete="off">
+                    <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('username') is-invalid @enderror" autofocus value="{{ old('username', $user->username) }}" autocomplete="off" value="">
                     @error('username')
                         <p class="mt-2 text-sm text-red-600 dark:text-red-500">
                             {{ $message }}
@@ -32,7 +33,7 @@
                 {{-- password --}}
                 <div class="mb-6">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                    <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('password') is-invalid @enderror" autofocus value="{{ old('password') }}">
+                    <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('password') is-invalid @enderror" autofocus>
                     @error('password')
                         <p class="mt-2 text-sm text-red-600 dark:text-red-500">
                             {{ $message }}

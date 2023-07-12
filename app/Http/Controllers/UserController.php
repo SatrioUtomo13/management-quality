@@ -61,7 +61,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('dashboard.petugas.edit', [
+            "user" => $user
+        ]);
     }
 
     /**
@@ -69,7 +71,28 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // make rules
+        $rules = [
+            "name" => ['required', 'max:255'],
+            "password" => ['required', 'min:5', 'max:255'],
+            "is_admin" => ['required']
+        ];
+
+        // check username
+        if ($request->username !== $user->username) {
+            $rules["username"] = ['required', 'unique:users'];
+        }
+
+        // validated data
+        $validatedData = $request->validate($rules);
+
+        $validatedData["password"] = Hash::make($validatedData["password"]); //hashing password
+
+        // update data
+        User::where('id', $user->id)->update($validatedData);
+
+        // redirect user
+        return redirect('/users')->with('success', 'User has been updated');
     }
 
     /**

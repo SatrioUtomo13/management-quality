@@ -27,6 +27,10 @@ Route::get('/login', [LoginController::class, 'index'])->name('login'); //view f
 Route::post('/login', [LoginController::class, 'authenticate']); // when user klik login button
 
 /* 
+route for logout system
+*/
+
+/* 
 route for dashboard system
 */
 Route::get('/dashboard', function () {
