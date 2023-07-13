@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PetugasController;
@@ -44,4 +45,8 @@ Route::get('/dashboard', function () {
 route for tambah pertugas
 */
 Route::resource('/users', UserController::class);
-//Route::resource('/users', PetugasController::class)->middleware('auth');
+
+/* 
+route for standar produk
+*/
+Route::resource('/items', ItemController::class);
