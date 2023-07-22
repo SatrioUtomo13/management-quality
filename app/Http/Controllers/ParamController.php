@@ -6,7 +6,7 @@ use App\Models\Item;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+class ParamController extends Controller
 {
     /**
      * Display a listing of the resource.

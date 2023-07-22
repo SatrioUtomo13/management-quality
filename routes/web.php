@@ -49,4 +49,4 @@ Route::resource('/users', UserController::class);
 /* 
 route for standar produk
 */
-Route::resource('/items', ItemController::class);
+Route::resource('/params', ParamController::class);
