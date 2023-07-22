@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ParamController;
 use App\Http\Controllers\PetugasController;
 
 /*
@@ -49,4 +50,5 @@ Route::resource('/users', UserController::class);
 /* 
 route for standar produk
 */
-Route::resource('/items', ItemController::class);
+//Route::resource('/items', ItemController::class);
+Route::resource('/params', ParamController::class);

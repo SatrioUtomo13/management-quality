@@ -3,11 +3,11 @@
 @section('content')
     <div class="space-y-5">
         <h2 class="text-2xl mb-6">
-            ITEMS
+            PARAMETERS
         </h2>
 
         {{-- add item --}}
-        <a href="/items/create" class="w-fit text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Tambah item</a>
+        <a href="/params/create" class="w-fit text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Tambah parameter</a>
 
         @if (session()->has('success'))
             <div class="w-11/12 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400" role="alert">
@@ -41,32 +41,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $item)
+                    @foreach ($params as $param)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $item->item }}
+                                {{ $param->item }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->type }}
+                                {{ $params->type }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->resin }}
+                                {{ $params->resin }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->wip }}
+                                {{ $params->wip }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/items/{{ $item->id }}/edit">
+                                <a href="/params/{{ $param->id }}/edit">
                                     <button class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-1 py-1 mb-2 dark:focus:ring-yellow-900">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                         </svg>
                                     </button>
                                 </a>
-                                <form action="/items/{{ $item->id }}" method="post" class="inline">
+                                <form action="/params/{{ $parms->id }}" method="post" class="inline">
                                     @method('DELETE')
                                     @csrf
                                     <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick="return confirm('Apakah anda yakin?')">
