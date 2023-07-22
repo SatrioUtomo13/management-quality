@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Param;
-use App\Http\Requests\StoreParamRequest;
-use App\Http\Requests\UpdateParamRequest;
+use Illuminate\Http\Request;
 
 class ParamController extends Controller
 {
@@ -29,7 +28,7 @@ class ParamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreParamRequest $request)
+    public function store(Request $request)
     {
         /* validated data */
         $validatedData = $request->validate([
@@ -69,7 +68,7 @@ class ParamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateParamRequest $request, Param $param)
+    public function update(Request $request, Param $param)
     {
         // create rules
         $rules = [

@@ -6,17 +6,17 @@
             PARAMETERS
         </h2>
 
-        {{-- add item --}}
+        {{-- add parameter --}}
         <a href="/params/create" class="w-fit text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Tambah parameter</a>
 
         @if (session()->has('success'))
-            <div class="w-11/12 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400" role="alert">
+            <div class="w-full p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400" role="alert">
                 {{ session('success') }}
             </div>
         @endif
 
         {{-- Table --}}
-        <div class="w-11/12 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="w-full relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -27,13 +27,25 @@
                             Item
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Type
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Resin
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            WIP
+                            Type
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            max rc
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            min rc
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            max vc
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            min rc
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Angin
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Aksi
@@ -49,14 +61,26 @@
                             <td class="px-6 py-4">
                                 {{ $param->item }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{ $params->type }}
+                            <td class="px-6 py-4 uppercase">
+                                {{ $param->resin }}
+                            </td>
+                            <td class="px-6 py-4 uppercase">
+                                {{ $param->type }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $params->resin }}
+                                {{ $param->max_rc }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $params->wip }}
+                                {{ $param->min_rc }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $param->max_vc }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $param->min_vc }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $param->wind }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="/params/{{ $param->id }}/edit">
@@ -66,7 +90,7 @@
                                         </svg>
                                     </button>
                                 </a>
-                                <form action="/params/{{ $parms->id }}" method="post" class="inline">
+                                <form action="/params/{{ $param->id }}" method="post" class="inline">
                                     @method('DELETE')
                                     @csrf
                                     <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-1 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick="return confirm('Apakah anda yakin?')">
