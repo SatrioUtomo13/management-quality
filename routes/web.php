@@ -54,5 +54,9 @@ Route::resource('/params', ParamController::class);
 /* 
 route for input data
 */
-
 Route::resource('/products', ProductController::class);
+
+/* 
+route for print
+*/
+Route::get('/printLabel', [PrintController::class, 'index']);
