@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ParamController;
-use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +49,10 @@ Route::resource('/users', UserController::class);
 /* 
 route for standar produk
 */
-//Route::resource('/items', ItemController::class);
 Route::resource('/params', ParamController::class);
+
+/* 
+route for input data
+*/
+
+Route::resource('/products', ProductController::class);
