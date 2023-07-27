@@ -9,3 +9,11 @@
 .is-invalid {
     @apply bg-red-100 border border-red-600 text-red-700 text-sm rounded-md outline-red-600 shadow-md px-2 py-1 block w-full;
 }
+
+.carousel-indicator button[aria-current="false"] {
+    @apply bg-gray-200;
+}
+
+.carousel-indicator button[aria-current="true"] {
+    @apply bg-primary-400;
+}

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ParamController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -59,4 +60,5 @@ Route::resource('/products', ProductController::class);
 /* 
 route for print
 */
-Route::get('/printLabel', [PrintController::class, 'index']);
+Route::get('/printHasil', [PrintController::class, 'index']);
+Route::get('/printLabel', [PrintController::class, 'printLabel']);
