@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -13,7 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('dashboard.product.index');
+        return view('dashboard.product.index', [
+            "products" => Product::all()
+        ]);
     }
 
     /**
@@ -21,15 +23,38 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.product.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            "tanggal" => ['required', 'date'],
+            "lot" => ['required'],
+            "item" => ['required'],
+            "resin" => ['required'],
+            "rc_r" => ['required', 'numeric'],
+            "rc_c" => ['required', 'numeric'],
+            "rc_l" => ['required', 'numeric'],
+            "vc_r" => ['required', 'numeric'],
+            "vc_l" => ['required', 'numeric'],
+            "speed" => ['required'],
+            "berat_aktual" => ['required', 'numeric'],
+            "berat_awal" => ['required', 'numeric'],
+            "berat_akhir" => ['required', 'numeric'],
+            "rsi" => ['nullable'],
+            "qty_transisi" => ['nullable'],
+            "qty_lot" => ['nullable'],
+            "qty_total" => ['nullable'],
+            "lot_wip" => ['required']
+        ]);
+
+        Product::create($validatedData); //store data to product 
+
+        return redirect('/products')->with('success', 'New Data has been Added'); //flashing data
     }
 
     /**
@@ -51,7 +76,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
         //
     }
