@@ -13,7 +13,9 @@
         {
             Schema::create('products', function (Blueprint $table) {
                 $table->id()->unique();
+                $table->foreignId('user_id');
                 $table->date('tanggal');
+                $table->string('shift');
                 $table->string('lot');
                 $table->string('item', 10);
                 $table->string('resin', 10);
@@ -30,7 +32,7 @@
                 $table->integer('qty_transisi')->nullable();
                 $table->integer('qty_lot')->nullable();
                 $table->integer('qty_total')->nullable();
-                $table->string('lot_wip');
+                $table->string('lot_wip')->unique();
                 $table->timestamps();
             });
         }

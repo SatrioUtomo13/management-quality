@@ -3,11 +3,12 @@
 @section('content')
     <div class="space-y-5">
         <h2 class="text-2xl mb-6">
-            TAMBAH DATA BARU
+            EDIT DATA
         </h2>
 
         <div class="relative overflow-x-auto">
-            <form action="/products" method="POST">
+            <form action="/products/{{ $product->id }}" method="POST">
+                @method('PUT')
                 @csrf
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-white uppercase bg-[#004755] dark:bg-gray-700 dark:text-gray-400">
@@ -91,66 +92,66 @@
                                 <input type="text" class="input-product" name="user_id" required value="{{ Auth::id() }}">
                             </td>
                             <td class="border">
-                                <input type="date" class="input-product" id="tanggal" name="tanggal" required>
+                                <input type="date" class="input-product" id="tanggal" name="tanggal" required value="{{ $product->tanggal }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="shift" required>
+                                <input type="text" class="input-product" name="shift" required value="{{ $product->shift }}"> 
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" id="lot" name="lot" required>
+                                <input type="text" class="input-product" id="lot" name="lot" required value="{{ $product->lot }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="item" required>
+                                <input type="text" class="input-product" name="item" required value="{{ $product->item }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="resin" required>
+                                <input type="text" class="input-product" name="resin" required value="{{ $product->resin }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_r" required>
+                                <input type="text" class="input-product" name="rc_r" required value="{{ $product->rc_r }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_c" required>
+                                <input type="text" class="input-product" name="rc_c" required value="{{ $product->rc_c }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_l" required>
+                                <input type="text" class="input-product" name="rc_l" required value="{{ $product->rc_l }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="vc_r" required>
+                                <input type="text" class="input-product" name="vc_r" required value="{{ $product->vc_r }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="vc_l" required>
+                                <input type="text" class="input-product" name="vc_l" required value="{{ $product->vc_l }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="speed" required>
+                                <input type="text" class="input-product" name="speed" required value="{{ $product->speed }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_aktual" required>
+                                <input type="text" class="input-product" name="berat_aktual" required value="{{ $product->berat_aktual }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_awal" required>
+                                <input type="text" class="input-product" name="berat_awal" required value="{{ $product->berat_awal }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_akhir" required>
+                                <input type="text" class="input-product" name="berat_akhir" required value="{{ $product->berat_akhir }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rsi">
+                                <input type="text" class="input-product" name="rsi" value="{{ $product->rsi }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_transisi">
+                                <input type="text" class="input-product" name="qty_transisi" value="{{ $product->qty_transisi }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_lot" required>
+                                <input type="text" class="input-product" name="qty_lot" required value="{{ $product->qty_lot }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_total" required>
+                                <input type="text" class="input-product" name="qty_total" required value="{{ $product->qty_total }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" id="lot_wip" name="lot_wip" required readonly>
+                                <input type="text" class="input-product" id="lot_wip" name="lot_wip" required readonly value="{{ $product->lot_wip }}">
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="text-white mt-5 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Save Data</button>
+                <button type="submit" class="text-white mt-5 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit Data</button>
             </form>
         </div>
     </div>

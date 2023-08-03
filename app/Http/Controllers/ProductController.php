@@ -31,8 +31,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
+            "user_id" => ['required'],
             "tanggal" => ['required', 'date'],
+            "shift" => ['required'],
             "lot" => ['required'],
             "item" => ['required'],
             "resin" => ['required'],
@@ -49,7 +52,7 @@ class ProductController extends Controller
             "qty_transisi" => ['nullable'],
             "qty_lot" => ['nullable'],
             "qty_total" => ['nullable'],
-            "lot_wip" => ['required']
+            "lot_wip" => ['required', 'unique:products']
         ]);
 
         Product::create($validatedData); //store data to product 
@@ -70,7 +73,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('dashboard.product.edit', [
+            "product" => $product
+        ]);
     }
 
     /**
@@ -78,7 +83,42 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // make rules
+        $rules = [
+            "user_id" => ['required'],
+            "tanggal" => ['required', 'date'],
+            "shift" => ['required'],
+            "lot" => ['required'],
+            "item" => ['required'],
+            "resin" => ['required'],
+            "rc_r" => ['required', 'numeric'],
+            "rc_c" => ['required', 'numeric'],
+            "rc_l" => ['required', 'numeric'],
+            "vc_r" => ['required', 'numeric'],
+            "vc_l" => ['required', 'numeric'],
+            "speed" => ['required'],
+            "berat_aktual" => ['required', 'numeric'],
+            "berat_awal" => ['required', 'numeric'],
+            "berat_akhir" => ['required', 'numeric'],
+            "rsi" => ['nullable'],
+            "qty_transisi" => ['nullable'],
+            "qty_lot" => ['nullable'],
+            "qty_total" => ['nullable'],
+        ];
+
+        // check lot wip
+        if ($request->lot_wip !== $product->lot_wip) {
+            $rules["lot_wip"] = ['required', 'unique:products'];
+        }
+
+        // validated data
+        $validatedData = $request->validate($rules);
+
+        // update data
+        Product::where('id', $product->id)->update($validatedData);
+
+        // redirect user
+        return redirect('/products')->with('success', 'Product has been updated');
     }
 
     /**
@@ -86,6 +126,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        Product::destroy($product->id); //delete product sesuai dengan id
+
+        return redirect('/products')->with('success', 'Product has been deleted'); //redirect with flash message
     }
 }

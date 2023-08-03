@@ -24,6 +24,14 @@ class User extends Authenticatable
     // ];
     protected $guarded = ['id'];
 
+    /* 
+    relation with model product
+    */
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

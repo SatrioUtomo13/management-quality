@@ -27,7 +27,7 @@
                             Username
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Password
+                            Team
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Aksi
@@ -44,7 +44,7 @@
                                 {{ $user->username }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $user->password }}
+                                {{ $user->tim }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="/users/{{ $user->id }}/edit">

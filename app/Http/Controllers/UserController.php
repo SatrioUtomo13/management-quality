@@ -37,6 +37,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             "name" => ['required', 'max:255'],
             "username" => ['required', 'unique:users'],
+            "tim" => ['required'],
             "password" => ['required', 'min:5', 'max:255'],
             "is_admin" => ['required']
         ]);
@@ -74,6 +75,7 @@ class UserController extends Controller
         // make rules
         $rules = [
             "name" => ['required', 'max:255'],
+            "tim" => ['required'],
             "password" => ['required', 'min:5', 'max:255'],
             "is_admin" => ['required']
         ];
