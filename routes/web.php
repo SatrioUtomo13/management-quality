@@ -1,5 +1,6 @@
 <?php
 
+use App\Charts\HasilProduksiChart;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -37,9 +38,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 /* 
 route for dashboard system
 */
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function (HasilProduksiChart $hasilProduksiChart) {
     return view('dashboard.index', [
-        "title" => "Dashboard"
+        "hasilProduksiChart" => $hasilProduksiChart->build()
     ]);
 })->middleware('auth');
 
