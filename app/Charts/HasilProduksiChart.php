@@ -31,8 +31,7 @@ class HasilProduksiChart
             $chartData[] = $data['dailyTotal'];
         }
         return $this->chart->lineChart()
-            ->setTitle('Sales during 2021.')
-            ->setSubtitle('Physical sales vs Digital sales.')
+            ->setTitle('Amount of Production.')
             ->addData('', $chartData)
             ->setXAxis($xAxisData);
     }
