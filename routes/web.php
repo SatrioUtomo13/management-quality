@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ParamController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -62,3 +63,8 @@ route for print
 */
 Route::get('/printHasil', [PrintController::class, 'index']);
 Route::get('/printLabel', [PrintController::class, 'printLabel']);
+
+/* 
+route for reports
+*/
+Route::get('/reports', [ReportController::class, 'index']);
