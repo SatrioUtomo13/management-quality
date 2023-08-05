@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Crypt;
 
@@ -28,5 +29,7 @@ class DatabaseSeeder extends Seeder
             "password" => bcrypt('password'),
             "is_admin" => true
         ]);
+
+        Product::factory(7)->create();
     }
 }
