@@ -69,3 +69,4 @@ Route::get('/printLabel', [PrintController::class, 'printLabel']);
 route for reports
 */
 Route::get('/reports', [ReportController::class, 'index']);
+Route::get('/qualityReport', [ReportController::class, 'qualityReport']);

@@ -13,8 +13,16 @@ class ReportController extends Controller
     {
         $products = Product::select('user_id', 'item', 'lot', 'berat_awal', 'berat_akhir', 'qty_total')->get();
 
-
         return view('dashboard.report.laporanProduksi.index', [
+            "products" => $products
+        ]);
+    }
+
+    public function qualityReport()
+    {
+        $products = Product::select('user_id', 'item', 'lot', 'rc_r', 'rc_c', 'rc_l', 'vc_r', 'vc_l')->get();
+
+        return view('dashboard.report.laporanKualitas.index', [
             "products" => $products
         ]);
     }
