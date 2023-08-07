@@ -106,19 +106,19 @@
                                 <input type="text" class="input-product" name="resin" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_r" required>
+                                <input type="number" class="input-product" name="rc_r" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_c" required>
+                                <input type="number" class="input-product" name="rc_c" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_l" required>
+                                <input type="number" class="input-product" name="rc_l" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="vc_r" required>
+                                <input type="number" class="input-product" name="vc_r" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="vc_l" required>
+                                <input type="number" class="input-product" name="vc_l" required>
                             </td>
                             <td class="border">
                                 <input type="text" class="input-product" name="speed" required>
@@ -136,13 +136,13 @@
                                 <input type="text" class="input-product" name="rsi">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_transisi">
+                                <input type="number" class="input-product" name="qty_transisi">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_lot" required>
+                                <input type="number" class="input-product" name="qty_lot" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_total" required>
+                                <input type="number" class="input-product" name="qty_total" required>
                             </td>
                             <td class="border">
                                 <input type="text" class="input-product" id="lot_wip" name="lot_wip" required readonly>

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Param extends Model
+class Report extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function report()
+    public function param()
     {
-        return $this->hasMany(Report::class);
+        return $this->belongsTo(Param::class);
     }
 }

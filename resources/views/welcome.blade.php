@@ -100,7 +100,7 @@
 
                 {{-- skip button --}}
                 <div class="w-full flex justify-center">
-                    <a href="/login" class="text-white inline-flex items-center self-center bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 dark:shadow-lg dark:shadow-orange-800/80 font-medium rounded-full text-sm px-10 py-2.5 text-center mb-2 md:mr-8 md:px-20 md:py-5 md:text-3xl lg:px-5 lg:py-2.5 lg:w-fit lg:text-sm lg:mr-0">
+                    <a href="/login" class="text-white inline-flex items-center self-center bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 dark:shadow-lg dark:shadow-orange-800/80 font-medium rounded-full text-sm px-10 py-2.5 text-center mb-2 md:mr-8 md:px-20 md:py-5 md:text-3xl lg:px-5 lg:py-2.5 lg:w-fit lg:text-sm lg:mr-0">
                         Skip
                         <svg class="w-3.5 h-3.5 ml-2 md:w-8 md:h-8 md:ml-5 lg:w-3.5 lg:h-3.5 lg:ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
