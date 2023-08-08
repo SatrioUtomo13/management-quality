@@ -21,8 +21,6 @@ class HasilProduksiChart
             ->groupBy('tanggal')
             ->get();
 
-        // return $dailyProduct;
-
         $chartData = [];
         $xAxisData = [];
 
