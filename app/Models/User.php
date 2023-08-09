@@ -25,6 +25,14 @@ class User extends Authenticatable
     protected $guarded = ['id'];
 
     /* 
+    relation with model idnproduct
+    */
+    public function idnproduct()
+    {
+        return $this->hasMany(IdnProduct::class);
+    }
+
+    /* 
     relation with model product
     */
     public function product()
