@@ -90,6 +90,18 @@
                             <td class="hidden">
                                 <input type="text" class="input-product" name="user_id" required value="{{ Auth::id() }}">
                             </td>
+                            <td class="hidden">
+                                <input type="text" class="input-product" name="lotwip_id" required value="{{ Auth::id() }}">
+                            </td>
+                            <td class="hidden">
+                                <input type="text" class="input-product" name="check_id" required value="{{ Auth::id() }}">
+                            </td>
+                            <td class="hidden">
+                                <input type="text" class="input-product" name="berat_id" required value="{{ Auth::id() }}">
+                            </td>
+                            <td class="hidden">
+                                <input type="text" class="input-product" name="quantity_id" required value="{{ Auth::id() }}">
+                            </td>
                             <td class="border">
                                 <input type="date" class="input-product" id="tanggal" name="tanggal" required>
                             </td>

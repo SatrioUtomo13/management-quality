@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('lotwip_id');
             $table->foreignId('check_id');
             $table->foreignId('berat_id');
+            $table->foreignId('quantity_id');
             $table->char('shift', 1);
             $table->string('item', 10);
             $table->string('resin', 10);

@@ -114,46 +114,46 @@
                                 {{ $product->resin }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->rc_r }}
+                                {{ $product->check->rc_r }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->rc_c }}
+                                {{ $product->check->rc_c }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->rc_l }}
+                                {{ $product->check->rc_l }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->vc_r }}
+                                {{ $product->check->vc_r }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->vc_l }}
+                                {{ $product->check->vc_l }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $product->speed }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->berat_aktual }}
+                                {{ $product->berat->berat_aktual }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->berat_awal }}
+                                {{ $product->berat->berat_awal }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->berat_akhir }}
+                                {{ $product->berat->berat_akhir }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->rsi }}
+                                {{ $product->berat->rsi }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->qty_transisi }}
+                                {{ $product->quantity->qty_transisi }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->qty_lot }}
+                                {{ $product->quantity->qty_lot }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $product->qty_total }}
+                                {{ $product->quantity->qty_total }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                {{ $product->lot_wip }}
+                                {{ $product->lotwip->lot_wip }}
                             </td>
                             <td class="px-6 py-4 flex">
                                 {{-- edit --}}

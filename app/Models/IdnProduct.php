@@ -42,4 +42,12 @@ class IdnProduct extends Model
     {
         return $this->belongsTo(Berat::class);
     }
+
+    /* 
+    relation to quantity model
+    */
+    public function quantity()
+    {
+        return $this->belongsTo(Quantity::class);
+    }
 }

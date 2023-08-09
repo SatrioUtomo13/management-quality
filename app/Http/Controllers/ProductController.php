@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berat;
+use App\Models\Check;
+use App\Models\LotWip;
 use App\Models\Product;
+use App\Models\Quantity;
+use App\Models\IdnProduct;
 use Illuminate\Http\Request;
 
 
@@ -14,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('dashboard.product.index', [
-            "products" => Product::latest()->get()
+            "products" => IdnProduct::latest()->get()
         ]);
     }
 
@@ -31,31 +36,57 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validatedData = $request->validate([
+        $ruleIdnProduct = [
             "user_id" => ['required'],
-            "tanggal" => ['required', 'date'],
+            "lotwip_id" => ['required'],
+            "check_id" => ['required'],
+            "berat_id" => ['required'],
+            "quantity_id" => ['required'],
             "shift" => ['required'],
-            "lot" => ['required'],
             "item" => ['required'],
             "resin" => ['required'],
+            "speed" => ['required'],
+        ];
+
+        $ruleLotWip = [
+            "tanggal" => ['required', 'date'],
+            "lot" => ['required'],
+            "lot_wip" => ['required',]
+        ];
+
+        $ruleCheck = [
             "rc_r" => ['required', 'numeric'],
             "rc_c" => ['required', 'numeric'],
             "rc_l" => ['required', 'numeric'],
             "vc_r" => ['required', 'numeric'],
             "vc_l" => ['required', 'numeric'],
-            "speed" => ['required'],
+        ];
+
+        $ruleBerat = [
             "berat_aktual" => ['required', 'numeric'],
             "berat_awal" => ['required', 'numeric'],
             "berat_akhir" => ['required', 'numeric'],
             "rsi" => ['nullable'],
+        ];
+
+        $ruleQuantity = [
             "qty_transisi" => ['nullable'],
             "qty_lot" => ['nullable'],
             "qty_total" => ['nullable'],
-            "lot_wip" => ['required', 'unique:products']
-        ]);
+        ];
 
-        Product::create($validatedData); //store data to product 
+        $validatedDataIdnProduct = $request->validate($ruleIdnProduct);
+        $validatedDataLotWip = $request->validate($ruleLotWip);
+        $validatedDataCheck = $request->validate($ruleCheck);
+        $validatedDataberat = $request->validate($ruleBerat);
+        $validatedDataQuantity = $request->validate($ruleQuantity);
+
+
+        IdnProduct::create($validatedDataIdnProduct);
+        LotWip::create($validatedDataLotWip);
+        Check::create($validatedDataCheck);
+        Berat::create($validatedDataberat);
+        Quantity::create($validatedDataQuantity);
 
         return redirect('/products')->with('success', 'New Data has been Added'); //flashing data
     }
