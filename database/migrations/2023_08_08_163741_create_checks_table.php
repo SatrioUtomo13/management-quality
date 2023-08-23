@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('checks', function (Blueprint $table) {
             $table->id();
-            $table->integer('rc_r');
-            $table->integer('rc_c');
-            $table->integer('rc_l');
-            $table->integer('vc_r');
-            $table->integer('vc_l');
+            $table->decimal('rc_r', 4, 1);
+            $table->decimal('rc_c', 4, 1);
+            $table->decimal('rc_l', 4, 1);
+            $table->decimal('vc_r', 3, 1);
+            $table->decimal('vc_l', 3, 1);
             $table->timestamps();
         });
     }

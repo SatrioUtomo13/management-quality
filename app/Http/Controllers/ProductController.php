@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Berat;
 use App\Models\Check;
+use App\Models\Param;
 use App\Models\LotWip;
 use App\Models\Product;
 use App\Models\Quantity;
 use App\Models\IdnProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProductController extends Controller
@@ -28,7 +30,21 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.product.create');
+        //$items = [];
+
+        // if (request("itemSearch")) {
+        //     $items = Param::where('item', 'like', '%' . request("itemSearch") . '%')->get();
+        // }
+
+        if (request("itemSearch")) {
+            $items = Param::items();
+        } else {
+            $items = [];
+        }
+
+        return view('dashboard.product.create', [
+            "params" => $items
+        ]);
     }
 
     /**
@@ -51,7 +67,7 @@ class ProductController extends Controller
         $ruleLotWip = [
             "tanggal" => ['required', 'date'],
             "lot" => ['required'],
-            "lot_wip" => ['required',]
+            "lot_wip" => ['required', 'unique:lot_wips']
         ];
 
         $ruleCheck = [
@@ -75,8 +91,9 @@ class ProductController extends Controller
             "qty_total" => ['nullable'],
         ];
 
-        $validatedDataIdnProduct = $request->validate($ruleIdnProduct);
         $validatedDataLotWip = $request->validate($ruleLotWip);
+
+        $validatedDataIdnProduct = $request->validate($ruleIdnProduct);
         $validatedDataCheck = $request->validate($ruleCheck);
         $validatedDataberat = $request->validate($ruleBerat);
         $validatedDataQuantity = $request->validate($ruleQuantity);
@@ -89,6 +106,7 @@ class ProductController extends Controller
         Quantity::create($validatedDataQuantity);
 
         return redirect('/products')->with('success', 'New Data has been Added'); //flashing data
+
     }
 
     /**

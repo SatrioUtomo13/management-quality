@@ -11,6 +11,15 @@ class Param extends Model
 
     protected $guarded = ['id'];
 
+    /* === search feature === */
+    public function scopeItems($query)
+    {
+        // if (request("itemSearch")) {
+        //     return $query->where('item', 'like', '%' . request("itemSearch") . '%')->get();
+        // }
+        return $query->where('item', 'like', '%' . request("itemSearch") . '%')->get();
+    }
+
     public function report()
     {
         return $this->hasMany(Report::class);

@@ -15,6 +15,12 @@
             </div>
         @endif
 
+        @if (session()->has('inputError'))
+            <div class="w-full p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100 dark:bg-gray-800 dark:text-red-400" role="alert">
+                {{ session('inputError') }}
+            </div>
+        @endif
+
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-white uppercase bg-[#004755] dark:bg-gray-700 dark:text-gray-400">
