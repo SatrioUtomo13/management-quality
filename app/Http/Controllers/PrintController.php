@@ -11,7 +11,7 @@ class PrintController extends Controller
     public function index()
     {
 
-        $products = Product::query();
+        $products = IdnProduct::query();
 
         if (request('search')) {
             $products->where('lot_wip', request('search'));
@@ -24,15 +24,30 @@ class PrintController extends Controller
         ]);
     }
 
+    // public function printLabel()
+    // {
+    //     $products = IdnProduct::query();
+
+    //     if (request('search')) {
+    //         $products->lotwip->where('lot_wip', request('search'));
+    //     }
+
+    //     $product = $products->with('lotwip')->latest()->first();
+
+    //     return view('dashboard.print.printLabel.index', [
+    //         'product' => $product
+    //     ]);
+    // }
     public function printLabel()
     {
-        $products = IdnProduct::query();
-
-        if (request('search')) {
-            $products->where('lot_wip', request('search'));
-        }
-
-        $product = $products->with('lotwip')->latest()->first();
+        $product = IdnProduct::with('lotwip')
+            ->when(request('search'), function ($query, $search) {
+                $query->whereHas('lotwip', function ($subquery) use ($search) {
+                    $subquery->where('lot_wip', $search);
+                });
+            })
+            ->latest()
+            ->first();
 
         return view('dashboard.print.printLabel.index', [
             'product' => $product

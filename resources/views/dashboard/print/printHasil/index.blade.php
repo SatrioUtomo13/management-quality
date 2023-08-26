@@ -40,22 +40,22 @@
                         <tr>
                             <td>LOT WIP</td>
                             <td class="pl-2">:</td>
-                            <td>{{ isset($product) ? $product->lot_wip : '' }}</td>
+                            <td>{{ isset($product) ? $product->lotwip->lot_wip : '' }}</td>
                         </tr>
                         <tr>
                             <td>QTY</td>
                             <td class="pl-2">:</td>
-                            <td>{{ isset($product) ? $product->qty_lot : '' }}</td>
+                            <td>{{ isset($product) ? $product->quantity->qty_lot : '' }}</td>
                         </tr>
                         <tr>
                             <td>Qty RM awal - akhir</td>
                             <td class="pl-2">:</td>
-                            <td>{{ isset($product) ? $product->berat_awal : '' }} - {{ isset($product) ? $product->berat_akhir : '' }}</td>
+                            <td>{{ isset($product) ? $product->berat->berat_awal : '' }} - {{ isset($product) ? $product->berat->berat_akhir : '' }}</td>
                         </tr>
                         <tr>
                             <td>PIC - Team - shift</td>
                             <td class="pl-2">:</td>
-                            <td>{{ isset($product) ? $product->user->name : '' }} - {{ isset($product) ? $product->user->tim : '' }} - {{ isset($product) ? $product->shift : ''}}</td>
+                            <td><span class="uppercase">{{ isset($product) ? $product->user->name : '' }} - {{ isset($product) ? $product->user->tim : '' }}</span> - {{ isset($product) ? $product->shift : ''}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -207,7 +207,7 @@
                             </tr>
                             <tr>
                                 <td class="text-center text-2xl">Qty Awal</td>
-                                <td class="text-2xl">{{ isset($product) ? $product->qty_lot : '' }}</td>
+                                <td class="text-2xl">{{ isset($product) ? $product->quantity->qty_lot : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -216,7 +216,7 @@
                     <table class="w-full">
                         <tbody>
                             <tr>
-                                <td rowspan="2" class="text-center border-2 border-t-0 text-4xl">{{ isset($product) ? $product->lot_wip : '' }}</td>
+                                <td rowspan="2" class="text-center border-2 border-t-0 text-4xl">{{ isset($product) ? $product->lotwip->lot_wip : '' }}</td>
                                 <td class="border-2 border-t-0 text-sm text-center">Check <br> Brush</td>
                             </tr>
                             <tr>
