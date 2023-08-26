@@ -24,7 +24,7 @@ class IdnProduct extends Model
     */
     public function lotwip()
     {
-        return $this->belongsTo(LotWip::class);
+        return $this->hasOne(LotWip::class);
     }
 
     /* 
@@ -32,7 +32,7 @@ class IdnProduct extends Model
     */
     public function check()
     {
-        return $this->belongsTo(Check::class);
+        return $this->hasOne(Check::class);
     }
 
     /* 
@@ -40,7 +40,7 @@ class IdnProduct extends Model
     */
     public function berat()
     {
-        return $this->belongsTo(Berat::class);
+        return $this->hasOne(Berat::class);
     }
 
     /* 
@@ -48,6 +48,6 @@ class IdnProduct extends Model
     */
     public function quantity()
     {
-        return $this->belongsTo(Quantity::class);
+        return $this->hasOne(Quantity::class);
     }
 }

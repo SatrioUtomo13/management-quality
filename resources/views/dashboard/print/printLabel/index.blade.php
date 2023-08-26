@@ -26,7 +26,76 @@
         </div>
 
         <div class="w-full grid grid-cols-2 gap-x-20 gap-y-20">
+            @php
+                $subCount = 4;
+            @endphp
+
+            @for ($i = 0; $i < $subCount; $i++)
             <div>
+                <h2 class="text-center border-2">DATA HASIL TREATING</h2>
+
+                <div class="border-2 border-t-0 pt-3">
+                    <table class="ml-3">
+                        <tbody class="text-sm">
+                            <tr class="mt-5">
+                                <td>Tgl TREATING</td>
+                                <td>:</td>
+                                <td>{{ isset($product) ? $product->lotwip->tanggal : '' }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Resin</td>
+                                <td>:</td>
+                                <td>{{ isset($product) ? $product->resin : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Petugas & Team</td>
+                                <td>:</td>
+                                <td>{{ isset($product) ? $product->user->name : '' }} - {{ isset($product) ? $product->user->tim : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="pt-3">Nama WIP</td>
+                                <td>:</td>
+                                <td>WP-{{ isset($product) ? $product->resin : '' }}-{{ isset($product) ? $product->item : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Lot WIP</td>
+                                <td>:</td>
+                                <td>{{ isset($product) ? $product->lot_wip : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Panjang</td>
+                                <td>:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Lebar Tirisan(R/L)</td>
+                                <td>:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Qty</td>
+                                <td>:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="pt-3">RC</td>
+                                <td>:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>VC</td>
+                                <td>:</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @endfor
+            
+            
+            {{-- <div>
                 <h2 class="text-center border-2">DATA HASIL TREATING</h2>
 
                 <div class="border-2 border-t-0 pt-3">
@@ -208,68 +277,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div>
-                <h2 class="text-center border-2">DATA HASIL TREATING</h2>
-
-                <div class="border-2 border-t-0 pt-3">
-                    <table class="ml-3">
-                        <tbody class="text-sm">
-                            <tr class="mt-5">
-                                <td>Tgl TREATING</td>
-                                <td>:</td>
-                                <td>{{ isset($product) ? $product->tanggal : '' }}</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Resin</td>
-                                <td>:</td>
-                                <td>{{ isset($product) ? $product->resin : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Petugas & Team</td>
-                                <td>:</td>
-                                <td>{{ isset($product) ? $product->user->name : '' }} - {{ isset($product) ? $product->user->tim : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td class="pt-3">Nama WIP</td>
-                                <td>:</td>
-                                <td>WP-{{ isset($product) ? $product->resin : '' }}-{{ isset($product) ? $product->item : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Lot WIP</td>
-                                <td>:</td>
-                                <td>{{ isset($product) ? $product->lot_wip : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Panjang</td>
-                                <td>:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Lebar Tirisan(R/L)</td>
-                                <td>:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Qty</td>
-                                <td>:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td class="pt-3">RC</td>
-                                <td>:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>VC</td>
-                                <td>:</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

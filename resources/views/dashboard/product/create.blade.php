@@ -119,18 +119,6 @@
                             <td class="hidden">
                                 <input type="text" class="input-product" name="user_id" required value="{{ Auth::id() }}">
                             </td>
-                            <td class="hidden">
-                                <input type="text" class="input-product" name="lotwip_id" required value="{{ Auth::id() }}">
-                            </td>
-                            <td class="hidden">
-                                <input type="text" class="input-product" name="check_id" required value="{{ Auth::id() }}">
-                            </td>
-                            <td class="hidden">
-                                <input type="text" class="input-product" name="berat_id" required value="{{ Auth::id() }}">
-                            </td>
-                            <td class="hidden">
-                                <input type="text" class="input-product" name="quantity_id" required value="{{ Auth::id() }}">
-                            </td>
                             <td class="border">
                                 <input type="date" class="input-product" id="tanggal" name="tanggal" required>
                             </td>
@@ -169,16 +157,16 @@
                                 <input type="text" class="input-product" name="speed" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_aktual" required>
+                                <input type="number" class="input-product" name="berat_aktual" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_awal" required>
+                                <input type="number" class="input-product" name="berat_awal" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_akhir" required>
+                                <input type="number" class="input-product" name="berat_akhir" required>
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rsi">
+                                <input type="number" class="input-product" name="rsi">
                             </td>
                             <td class="border">
                                 <input type="number" class="input-product" name="qty_transisi">

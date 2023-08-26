@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('lot_wips', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('idn_product_id');
+
             $table->date('tanggal');
             $table->string('lot');
             $table->string('lot_wip')->unique();
-
             $table->timestamps();
+
+            $table->foreign('idn_product_id')->references('id')->on('idn_products')->onDelete('cascade');
         });
     }
 

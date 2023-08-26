@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('quantities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('idn_product_id');
+
             $table->integer("qty_transisi");
             $table->integer("qty_lot");
             $table->integer("qty_total");
             $table->timestamps();
+
+            $table->foreign('idn_product_id')->references('id')->on('idn_products')->onDelete('cascade');
         });
     }
 

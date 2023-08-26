@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\IdnProduct;
 use Illuminate\Http\Request;
 
 class PrintController extends Controller
@@ -25,13 +26,13 @@ class PrintController extends Controller
 
     public function printLabel()
     {
-        $products = Product::query();
+        $products = IdnProduct::query();
 
         if (request('search')) {
             $products->where('lot_wip', request('search'));
         }
 
-        $product = $products->latest()->first();
+        $product = $products->with('lotwip')->latest()->first();
 
         return view('dashboard.print.printLabel.index', [
             'product' => $product

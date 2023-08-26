@@ -92,13 +92,13 @@
                                 <input type="text" class="input-product" name="user_id" required value="{{ Auth::id() }}">
                             </td>
                             <td class="border">
-                                <input type="date" class="input-product" id="tanggal" name="tanggal" required value="{{ $product->tanggal }}">
+                                <input type="date" class="input-product" id="tanggal" name="tanggal" required value="{{ $product->lotwip->tanggal }}">
                             </td>
                             <td class="border">
                                 <input type="text" class="input-product" name="shift" required value="{{ $product->shift }}"> 
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" id="lot" name="lot" required value="{{ $product->lot }}">
+                                <input type="text" class="input-product" id="lot" name="lot" required value="{{ $product->lotwip->lot }}">
                             </td>
                             <td class="border">
                                 <input type="text" class="input-product" name="item" required value="{{ $product->item }}">
@@ -107,46 +107,46 @@
                                 <input type="text" class="input-product" name="resin" required value="{{ $product->resin }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_r" required value="{{ $product->rc_r }}">
+                                <input type="number" step="0.1" class="input-product" name="rc_r" required value="{{ $product->check->rc_r }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_c" required value="{{ $product->rc_c }}">
+                                <input type="number" step="0.1" class="input-product" name="rc_c" required value="{{ $product->check->rc_c }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rc_l" required value="{{ $product->rc_l }}">
+                                <input type="number" step="0.1" class="input-product" name="rc_l" required value="{{ $product->check->rc_l }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="vc_r" required value="{{ $product->vc_r }}">
+                                <input type="number" step="0.1" class="input-product" name="vc_r" required value="{{ $product->check->vc_r }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="vc_l" required value="{{ $product->vc_l }}">
+                                <input type="number" step="0.1" class="input-product" name="vc_l" required value="{{ $product->check->vc_l }}">
                             </td>
                             <td class="border">
                                 <input type="text" class="input-product" name="speed" required value="{{ $product->speed }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_aktual" required value="{{ $product->berat_aktual }}">
+                                <input type="number" class="input-product" name="berat_aktual" required value="{{ $product->berat->berat_aktual }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_awal" required value="{{ $product->berat_awal }}">
+                                <input type="number" class="input-product" name="berat_awal" required value="{{ $product->berat->berat_awal }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="berat_akhir" required value="{{ $product->berat_akhir }}">
+                                <input type="number" class="input-product" name="berat_akhir" required value="{{ $product->berat->berat_akhir }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="rsi" value="{{ $product->rsi }}">
+                                <input type="number" class="input-product" name="rsi" value="{{ $product->berat->rsi }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_transisi" value="{{ $product->qty_transisi }}">
+                                <input type="number" class="input-product" name="qty_transisi" value="{{ $product->quantity->qty_transisi }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_lot" required value="{{ $product->qty_lot }}">
+                                <input type="number" class="input-product" name="qty_lot" required value="{{ $product->quantity->qty_lot }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" name="qty_total" required value="{{ $product->qty_total }}">
+                                <input type="number" class="input-product" name="qty_total" required value="{{ $product->quantity->qty_total }}">
                             </td>
                             <td class="border">
-                                <input type="text" class="input-product" id="lot_wip" name="lot_wip" required readonly value="{{ $product->lot_wip }}">
+                                <input type="text" class="input-product min-w-fit" id="lot_wip" name="lot_wip" required readonly value="{{ $product->lotwip->lot_wip }}">
                             </td>
                         </tr>
                     </tbody>
