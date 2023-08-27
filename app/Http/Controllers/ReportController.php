@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
-use App\Charts\HasilProduksiChart;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
+use App\Models\IdnProduct;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Charts\HasilProduksiChart;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
     public function index()
     {
-        $query = Product::select('user_id', 'item', 'lot', 'berat_awal', 'berat_akhir', 'qty_total');
+        $query = IdnProduct::with('lotwip', 'berat', 'quantity');
 
         /* === Searching Feature === */
-
         if (request('search')) {
             $searchTerm = '%' . request('search') . '%';
             $query->where('item', 'LIKE', $searchTerm)
@@ -27,22 +27,30 @@ class ReportController extends Controller
 
         /* === Filter Feature === */
         if (request('filter-radio')) {
-            $selectedOption = request('filter-radio'); // create variable for contain http request
+            $selectedOption = request('filter-radio'); // create variable for containt http request
 
             // check option filter
             $endDate = Carbon::now();
             if ($selectedOption === 'Weekly') {
                 $startDate = Carbon::now()->subDays(7);
-                $query->whereBetween('created_at', [$startDate, $endDate]);
+                $query->whereHas('lotwip', function ($query) use ($startDate, $endDate) {
+                    $query->whereBetween('tanggal', [$startDate, $endDate]);
+                });
             } elseif ($selectedOption === 'Daily') {
                 $startDate = Carbon::now()->subDays(1);
-                $query->whereBetween('created_at', [$startDate, $endDate]);
+                $query->whereHas('lotwip', function ($query) use ($startDate, $endDate) {
+                    $query->whereBetween('tanggal', [$startDate, $endDate]);
+                });
             } elseif ($selectedOption === 'Monthly') {
                 $startDate = Carbon::now()->subMonth();
-                $query->whereBetween('created_at', [$startDate, $endDate]);
+                $query->whereHas('lotwip', function ($query) use ($startDate, $endDate) {
+                    $query->whereBetween('tanggal', [$startDate, $endDate]);
+                });
             } elseif ($selectedOption === 'Annual') {
                 $startDate = Carbon::now()->subYear();
-                $query->whereBetween('created_at', [$startDate, $endDate]);
+                $query->whereHas('lotwip', function ($query) use ($startDate, $endDate) {
+                    $query->whereBetween('tanggal', [$startDate, $endDate]);
+                });
             }
         }
 
