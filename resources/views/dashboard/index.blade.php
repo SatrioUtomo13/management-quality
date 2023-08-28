@@ -3,6 +3,8 @@
 @section('content')
     <h1 class="text-2xl mb-5">Welcome back, {{ auth()->user()->username }}</h1>
 
+    
+
     {{-- === Filter === --}}
     <div class="flex justify-end">
         <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
@@ -52,12 +54,24 @@
         </div>
     </div>
 
+    {{-- === Info Chart === --}}
+    <div class="flex space-x-4">
+        <div class="flex">
+            <span class="w-3 h-3 bg-gray-300 rounded-full mr-2 self-center"></span>
+            <p>Y Axis is Total Production</p>
+        </div>
+        <div class="flex">
+            <span class="w-3 h-3 bg-gray-300 rounded-full mr-2 self-center"></span>
+            <p>X Axis Range of Production</p>
+        </div>
+    </div>
+
     <div class="mt-2 bg-white rounded shadow p-5">
         {!! $hasilProduksiChart->container() !!}
     </div>
 
     {{-- === chart info === --}}
-    <div class="bg-white w-fit p-5 mt-5 border border-gray-200 rounded-md shadow-inner">
+    {{-- <div class="bg-white w-fit p-5 mt-5 border border-gray-200 rounded-md shadow-inner">
         <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Chart Info:</h2>
         <ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
             <li class="flex items-center">
@@ -73,7 +87,7 @@
                 X Axis is Range of Production
             </li>
         </ul>
-    </div>
+    </div> --}}
 
 
     <script src="{{ $hasilProduksiChart->cdn() }}"></script>

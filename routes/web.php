@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\IdnProduct;
 use App\Charts\HasilProduksiChart;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;

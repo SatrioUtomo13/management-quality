@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\IdnProduct;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
@@ -17,9 +18,18 @@ class HasilProduksiChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        $dailyProduct = Product::select('tanggal', DB::raw('SUM(qty_total) as dailyTotal'))
-            ->groupBy('tanggal')
-            ->get();
+        // get data relation
+        $query = IdnProduct::with(['lotwip', 'quantity']);
+
+        $dailyProduct = $query->get()->groupBy(function ($product) {
+            return $product->lotwip->tanggal;
+        })->map(function ($group) {
+            $dailyTotal = $group->sum('quantity.qty_total');
+            return [
+                'tanggal' => $group[0]->lotwip->tanggal,
+                'dailyTotal' => $dailyTotal,
+            ];
+        });
 
         $chartData = [];
         $xAxisData = [];
@@ -28,6 +38,7 @@ class HasilProduksiChart
             $xAxisData[] = $data['tanggal'];
             $chartData[] = $data['dailyTotal'];
         }
+
         return $this->chart->lineChart()
             ->setTitle('Amount of Production.')
             ->addData('', $chartData)
