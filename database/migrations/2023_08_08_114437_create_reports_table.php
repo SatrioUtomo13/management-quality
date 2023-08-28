@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('idn_product_id');
+
             $table->string('status');
-            $table->foreignId('param_id');
             $table->timestamps();
+
+            $table->foreign('idn_product_id')->references('id')->on('idn_products')->onDelete('cascade');
         });
     }
 

@@ -50,4 +50,12 @@ class IdnProduct extends Model
     {
         return $this->hasOne(Quantity::class);
     }
+
+    /* 
+    relation to report model
+    */
+    public function report()
+    {
+        return $this->hasOne(Report::class);
+    }
 }

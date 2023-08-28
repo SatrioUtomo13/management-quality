@@ -6,6 +6,7 @@ use App\Models\Berat;
 use App\Models\Check;
 use App\Models\Param;
 use App\Models\LotWip;
+use App\Models\Report;
 use App\Models\Product;
 use App\Models\Quantity;
 use App\Models\IdnProduct;
@@ -116,6 +117,26 @@ class ProductController extends Controller
             "qty_total" => $request->input('qty_total'),
         ]);
 
+        // get data
+        $params = Param::where('item', $request->input('item'))->first();
+        $paramMax_Rc = $params->max_rc;
+        $paramMin_Rc = $params->min_rc;
+
+        // create report
+        $rc_r = $request->input('rc_r');
+
+        if ($rc_r >= $paramMin_Rc && $rc_r <= $paramMax_Rc) {
+            $status = "good";
+        } else {
+            $status = "reject";
+        }
+        $report = new Report([
+            "status" => $status
+        ]);
+
+        // reference report to IdnProduct
+        $idnProduct->report()->save($report);
+
         // reference lot wip to IdnProduct
         $idnProduct->lotwip()->save($lotwip);
 
@@ -185,6 +206,23 @@ class ProductController extends Controller
 
         // validated data
         $validatedData = $request->validate($rules);
+
+        // get data
+        $params = Param::where('item', $request->input('item'))->first();
+        $paramMax_Rc = $params->max_rc;
+        $paramMin_Rc = $params->min_rc;
+
+        // create report
+        $rc_r = $request->input('rc_r');
+
+        if ($rc_r >= $paramMin_Rc && $rc_r <= $paramMax_Rc) {
+            $status = "good";
+        } else {
+            $status = "reject";
+        }
+        $product->report->update([
+            "status" => $status
+        ]);
 
         // update data lotwip melalui relasi
         $product->lotwip->update([

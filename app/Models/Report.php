@@ -11,8 +11,11 @@ class Report extends Model
 
     protected $guarded = ['id'];
 
-    public function param()
+    /* 
+    relation to IdnProduct model
+    */
+    public function idnproduct()
     {
-        return $this->belongsTo(Param::class);
+        return $this->belongsTo(IdnProduct::class);
     }
 }
